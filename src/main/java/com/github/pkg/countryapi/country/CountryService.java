@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -48,13 +49,21 @@ public class CountryService {
     }
 
     public List<Country> getCountriesForAnswers(QuestionType type, String exclude) {
-        return switch (type) {
-            case FLAG -> countryRepository.randomCountriesExcludingFlag(exclude);
-            case CAPITAL_CITY -> countryRepository.randomCountriesExcludingCapital(exclude);
-            case DOMAIN_EXTENSION -> countryRepository.randomCountriesExcludingDomain(exclude);
-            case LANGUAGE -> countryRepository.randomCountriesExcludingLanguage(exclude);
-            case POPULATION -> countryRepository.randomCountriesPopulationLessThan(exclude);
-            case REGION -> countryRepository.randomCountriesExcludingRegion(exclude);
-        };
+        switch (type) {
+            case FLAG:
+                return countryRepository.randomCountriesExcludingFlag(exclude);
+            case CAPITAL_CITY:
+                return countryRepository.randomCountriesExcludingCapital(exclude);
+            case DOMAIN_EXTENSION:
+                return countryRepository.randomCountriesExcludingDomain(exclude);
+            case LANGUAGE:
+                return countryRepository.randomCountriesExcludingLanguage(exclude);
+            case POPULATION:
+                return countryRepository.randomCountriesPopulationLessThan(exclude);
+            case REGION:
+                return countryRepository.randomCountriesExcludingRegion(exclude);
+            default:
+                return Collections.emptyList();
+        }
     }
 }

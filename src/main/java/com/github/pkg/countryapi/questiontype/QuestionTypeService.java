@@ -11,31 +11,49 @@ import java.text.NumberFormat;
 public class QuestionTypeService {
 
     public String getQuestionText(QuestionType type, Country correctCountry) {
-        return switch (type) {
-            case FLAG -> "Which country does this flag belong to?";
-            case DOMAIN_EXTENSION -> "Which country uses this as their Internet Domain?";
-            case REGION -> "Which country is in this region of the World?";
-            case CAPITAL_CITY -> correctCountry.getCapital() + " is the capital of which country?";
-            case POPULATION -> "Which country has a population of " + NumberFormat.getInstance().format(correctCountry.getPopulation()) + "?";
-            case LANGUAGE -> "In which country is " + correctCountry.getLanguage() + " a primary spoken language?";
-        };
+        switch (type) {
+            case FLAG:
+                return "Which country does this flag belong to?";
+            case DOMAIN_EXTENSION:
+                return "Which country uses this as their Internet Domain?";
+            case REGION:
+                return "Which country is in this region of the World?";
+            case CAPITAL_CITY:
+                return correctCountry.getCapital() + " is the capital of which country?";
+            case POPULATION:
+                return "Which country has a population of " + NumberFormat.getInstance().format(correctCountry.getPopulation()) + "?";
+            case LANGUAGE:
+                return "In which country is " + correctCountry.getLanguage() + " a primary spoken language?";
+            default:
+                return null;
+        }
     }
 
     public String getExcludedValue(QuestionType type, Country correctCountry) {
-        return switch (type) {
-            case FLAG -> correctCountry.getFlagSrc();
-            case DOMAIN_EXTENSION -> correctCountry.getDomainExtension();
-            case REGION -> correctCountry.getSubregion();
-            case CAPITAL_CITY -> correctCountry.getCapital();
-            case POPULATION -> String.valueOf(correctCountry.getPopulation());
-            case LANGUAGE -> correctCountry.getLanguage();
-        };
+        switch (type) {
+            case FLAG:
+                return correctCountry.getFlagSrc();
+            case DOMAIN_EXTENSION:
+                return correctCountry.getDomainExtension();
+            case REGION:
+                return correctCountry.getSubregion();
+            case CAPITAL_CITY:
+                return correctCountry.getCapital();
+            case POPULATION:
+                return String.valueOf(correctCountry.getPopulation());
+            case LANGUAGE:
+                return correctCountry.getLanguage();
+            default:
+                return null;
+        }
     }
 
     public String getQuestionMedia(QuestionType type, Country correctCountry) {
-        return switch (type) {
-            case FLAG -> correctCountry.getFlagSrc();
-            default -> null;
-        };
+        switch (type) {
+            case FLAG:
+                return correctCountry.getFlagSrc();
+            default:
+                return null;
+        }
     }
 }

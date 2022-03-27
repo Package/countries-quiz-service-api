@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/question-types")
@@ -15,7 +16,7 @@ public class QuestionTypeController {
 
     @GetMapping
     public ResponseEntity<QuestionTypeListResponse> questionTypes() {
-        List<QuestionType> questionTypes = Arrays.stream(QuestionType.values()).toList();
+        List<QuestionType> questionTypes = Arrays.stream(QuestionType.values()).collect(Collectors.toList());
 
         QuestionTypeListResponse response = new QuestionTypeListResponse(questionTypes);
 

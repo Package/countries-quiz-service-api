@@ -27,7 +27,7 @@ public class AnswerService {
         List<Answer> answers = countries
                 .stream()
                 .map(country -> buildAnswerForCountry(question, country, correctCountry))
-                .toList();
+                .collect(Collectors.toList());
 
         answerRepository.saveAllAndFlush(answers);
     }
