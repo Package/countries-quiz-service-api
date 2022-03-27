@@ -1,9 +1,7 @@
 package com.github.pkg.countryapi.questiontype;
 
 import lombok.Getter;
-import lombok.ToString;
 
-@ToString
 public enum QuestionType {
     CAPITAL_CITY("CAPITAL_CITY"),
     POPULATION("POPULATION"),
@@ -17,5 +15,10 @@ public enum QuestionType {
 
     QuestionType(String questionType) {
         this.questionType = questionType;
+    }
+
+    @Override
+    public String toString() {
+        return this.questionType;
     }
 }

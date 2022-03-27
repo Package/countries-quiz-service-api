@@ -15,13 +15,13 @@ public class QuestionTypeService {
             case FLAG:
                 return "Which country does this flag belong to?";
             case DOMAIN_EXTENSION:
-                return "Which country uses this as their Internet Domain?";
+                return "Which country uses " + correctCountry.getDomainExtension() + " as their Internet Domain?";
             case REGION:
-                return "Which country is in this region of the World?";
+                return "Which of these countries is in " + correctCountry.getSubregion() + "?";
             case CAPITAL_CITY:
                 return correctCountry.getCapital() + " is the capital of which country?";
             case POPULATION:
-                return "Which country has a population of " + NumberFormat.getInstance().format(correctCountry.getPopulation()) + "?";
+                return "Which of these countries has a population of " + NumberFormat.getInstance().format(correctCountry.getPopulation()) + "?";
             case LANGUAGE:
                 return "In which country is " + correctCountry.getLanguage() + " a primary spoken language?";
             default:

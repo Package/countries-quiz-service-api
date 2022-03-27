@@ -25,6 +25,10 @@ public class QuestionService {
         return questionRepository.findAll();
     }
 
+    public List<Question> getRandomQuestions(Integer amount) {
+        return questionRepository.getRandomQuestions(amount);
+    }
+
     public List<Question> getQuestionsByType(QuestionType type) {
         return questionRepository.findByTypeOrderByText(type);
     }
