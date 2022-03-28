@@ -5,7 +5,7 @@ services:
     image: 'docker-spring-boot-postgres:latest'
     build:
       context: .
-    container_name: app
+    container_name: api
     depends_on:
       - db
     environment:
@@ -25,4 +25,4 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
         # Run initial script to create DB
-      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql

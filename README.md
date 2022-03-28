@@ -12,11 +12,11 @@ API Documentation is [available here](https://countries-quiz-service-api.herokua
 
 To run the API locally, you can use [Docker](https://www.docker.com/)
 
-Starting the API: `./api-start.sh`
+Starting the API: `docker-compose up`
 
 API will then be running at: `http://localhost:5000`
 
-Stopping the API: `./api-stop.sh`
+Stopping the API: `docker-compose down`
 
 ## Seeding Data
 
