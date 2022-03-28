@@ -1,0 +1,17 @@
+# Properties for Testing - switch from Postgres to H2 database.
+server:
+  port: 5000
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2://mem:country_api;DB_CLOSE_DELAY=-1
+    username: sa
+    password: sa
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.H2Dialect
